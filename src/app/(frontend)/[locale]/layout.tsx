@@ -21,6 +21,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { routing } from '@/i18n/routing'
 import { notFound } from 'next/navigation'
 import localization from '@/i18n/localization'
+import { ReactLenis } from '@/utilities/lenis'
 
 type Args = {
   children: React.ReactNode
@@ -54,21 +55,24 @@ export default async function RootLayout({ children, params }: Args) {
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
+
       <body>
-        <Providers>
-          <NextIntlClientProvider messages={messages}>
-            {/* <AdminBar
+        <ReactLenis root>
+          <Providers>
+            <NextIntlClientProvider messages={messages}>
+              {/* <AdminBar
               adminBarProps={{
                 preview: isEnabled,
               }}
             /> */}
-            <LivePreviewListener />
+              <LivePreviewListener />
 
-            <Header locale={locale} />
-            {children}
-            <Footer locale={locale} />
-          </NextIntlClientProvider>
-        </Providers>
+              <Header locale={locale} />
+              {children}
+              <Footer locale={locale} />
+            </NextIntlClientProvider>
+          </Providers>
+        </ReactLenis>
       </body>
     </html>
   )
