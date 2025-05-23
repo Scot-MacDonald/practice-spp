@@ -16,20 +16,29 @@ export async function Footer({ locale }: { locale: TypedLocale }) {
   const navItems = footer?.navItems || []
 
   return (
-    <footer className="border-t border-border bg-black dark:bg-card text-white" data-theme="dark">
+    <footer className="border-t border-border">
       <div className="container py-8 gap-8 flex flex-col md:flex-row md:justify-between">
-        <Link className="flex items-center" href="/">
-          <Logo className="h-8" />
-        </Link>
+        <div className="flex flex-col items-start gap-2">
+          {/* <Link href="/" className="flex">
+            <Logo className="h-8" />
+          </Link> */}
+          <div className="text-sm leading-snug">
+            <div>SPP-Mitte</div>
+            <div>Linienstraße 127 (VH, 2. OG rechts)</div>
+            <div>10115 Berlin-Mitte</div>
+            <div>Tel.: 030 - 282 50 52</div>
+            <div>Fax: 030 - 278 90 537</div>
+          </div>
+        </div>
 
         <div className="flex flex-col-reverse items-start md:flex-row gap-4 md:items-center">
           <nav className="flex flex-col md:flex-row gap-4">
             {navItems.map(({ link }, i) => {
-              return <CMSLink className="text-white" key={i} {...link} />
+              return <CMSLink className="" key={i} {...link} />
             })}
           </nav>
           <LocaleSwitcher className="ml-5" />
-          <ThemeSelector  />
+          <ThemeSelector />
         </div>
       </div>
     </footer>

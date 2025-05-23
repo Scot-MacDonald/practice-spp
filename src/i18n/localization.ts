@@ -10,18 +10,18 @@ const localization = {
       // such as the user type, and the order of languages. See https://ux.stackexchange.com/q/3592/144485
       label: 'English',
     },
-    {
-      code: 'tr',
-      label: 'Türkçe',
-    },
+    // {
+    //   code: 'tr',
+    //   label: 'Türkçe',
+    // },
     // {
     //   code: 'es',
     //   label: 'Spanish (Español)',
     // },
-    // {
-    //   code: 'de',
-    //   label: 'German (Deutsch)',
-    // },
+    {
+      code: 'de',
+      label: 'Deutsch',
+    },
     // {
     //   code: 'ja',
     //   label: 'Japanese (日本語)',
