@@ -27,30 +27,30 @@ export default {
     container: {
       center: true,
       padding: {
-        '2xl': '2rem',
         DEFAULT: '1rem',
-        lg: '2rem',
-        md: '2rem',
         sm: '1rem',
+        md: '2rem',
+        lg: '2rem',
         xl: '2rem',
+        '2xl': '2rem',
       },
       screens: {
-        '2xl': '86rem',
-        lg: '64rem',
-        md: '48rem',
         sm: '40rem',
+        md: '48rem',
+        lg: '64rem',
         xl: '80rem',
+        '2xl': '86rem',
       },
     },
     extend: {
-      animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
+      fontFamily: {
+        sans: ['var(--font-geist-sans)'],
+        mono: ['var(--font-geist-mono)'],
       },
       borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+        md: 'calc(var(--radius) - 2px)',
+        lg: 'var(--radius)',
       },
       colors: {
         accent: {
@@ -90,10 +90,6 @@ export default {
         error: 'hsl(var(--error))',
         warning: 'hsl(var(--warning))',
       },
-      fontFamily: {
-        mono: ['var(--font-geist-mono)'],
-        sans: ['var(--font-geist-sans)'],
-      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
@@ -103,6 +99,10 @@ export default {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
       },
       typography: ({ theme }) => ({
         DEFAULT: {
