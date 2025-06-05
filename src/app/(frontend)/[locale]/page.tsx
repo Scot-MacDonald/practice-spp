@@ -13,6 +13,8 @@ import type { Page as PageType } from '@/payload-types'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { RenderHero } from '@/heros/RenderHero'
 import PageClient from './[slug]/page.client'
+import { OpeningHours } from '@/components/OpeningHours'
+import MinimalMap from '@/components/MinimalMap'
 
 type Args = {
   params: Promise<{
@@ -49,7 +51,17 @@ export default async function Page({ params: paramsPromise }: Args) {
       <PayloadRedirects disableNotFound url={url} />
 
       <RenderHero {...hero} />
+
       <RenderBlocks blocks={layout} locale={locale} />
+      <section className="container px-4">
+        <h2>Visit Us</h2>
+        <MinimalMap
+          lat={52.5266449151552}
+          lng={13.389572770327602}
+          secondIconUrl={'media/S-Bahn-Logo.svg.webp?.url'}
+          thirdIconUrl={'media/U-Bahn.svg?.url'}
+        />
+      </section>
     </article>
   )
 }

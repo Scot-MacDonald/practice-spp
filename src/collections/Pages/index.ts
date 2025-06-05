@@ -1,13 +1,17 @@
-import type { CollectionConfig, TypedLocale } from 'payload'
+import type { CollectionConfig } from 'payload'
 
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
 import { Archive } from '../../blocks/ArchiveBlock/config'
+import { Doctor } from '../../blocks/DoctorBlock/config'
 import { CallToAction } from '../../blocks/CallToAction/config'
 import { Content } from '../../blocks/Content/config'
+import { ContentWithImage } from '@/blocks/ContentWithImageBlock/config'
 import { FormBlock } from '../../blocks/Form/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { AccordionBlock } from '@/blocks/Accordion/config'
+export { NewsBlock } from '@/blocks/NewsBlock/config'
+import { Carousel } from '@/blocks/Carousel/config'
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -21,14 +25,29 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
+import { NewsBlock } from '@/blocks/NewsBlock/config'
+
 export const Pages: CollectionConfig = {
   slug: 'pages',
+
+  labels: {
+    singular: {
+      en: 'Page',
+      de: 'Seite',
+    },
+    plural: {
+      en: 'Pages',
+      de: 'Seiten',
+    },
+  },
+
   access: {
     create: authenticated,
     delete: authenticated,
     read: authenticatedOrPublished,
     update: authenticated,
   },
+
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
     livePreview: {
@@ -53,19 +72,27 @@ export const Pages: CollectionConfig = {
     },
     useAsTitle: 'title',
   },
+
   fields: [
     {
       name: 'title',
-      localized: true,
       type: 'text',
+      localized: true,
       required: true,
+      label: {
+        en: 'Title',
+        de: 'Titel',
+      },
     },
     {
       type: 'tabs',
       tabs: [
         {
           fields: [hero],
-          label: 'Hero',
+          label: {
+            en: 'Hero',
+            de: 'Hero',
+          },
         },
         {
           fields: [
@@ -73,15 +100,36 @@ export const Pages: CollectionConfig = {
               name: 'layout',
               type: 'blocks',
               localized: true,
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, AccordionBlock],
+              blocks: [
+                CallToAction,
+                Content,
+                ContentWithImage,
+                MediaBlock,
+                Archive,
+                Doctor,
+                FormBlock,
+                AccordionBlock,
+                NewsBlock,
+                Carousel,
+              ],
               required: true,
+              label: {
+                en: 'Layout',
+                de: 'Layout',
+              },
             },
           ],
-          label: 'Content',
+          label: {
+            en: 'Content',
+            de: 'Inhalt',
+          },
         },
         {
           name: 'meta',
-          label: 'SEO',
+          label: {
+            en: 'SEO',
+            de: 'SEO',
+          },
           fields: [
             OverviewField({
               titlePath: 'meta.title',
@@ -94,13 +142,9 @@ export const Pages: CollectionConfig = {
             MetaImageField({
               relationTo: 'media',
             }),
-
             MetaDescriptionField({}),
             PreviewField({
-              // if the `generateUrl` function is configured
               hasGenerateFn: true,
-
-              // field paths to match the target field for data
               titlePath: 'meta.title',
               descriptionPath: 'meta.description',
             }),
@@ -114,17 +158,23 @@ export const Pages: CollectionConfig = {
       admin: {
         position: 'sidebar',
       },
+      label: {
+        en: 'Published At',
+        de: 'Veröffentlicht am',
+      },
     },
     ...slugField('title', { slugOverrides: { localized: true } }),
   ],
+
   hooks: {
     afterChange: [revalidatePage],
     beforeChange: [populatePublishedAt],
   },
+
   versions: {
     drafts: {
       autosave: {
-        interval: 100, // We set this interval for optimal live preview
+        interval: 100,
       },
     },
     maxPerDoc: 50,

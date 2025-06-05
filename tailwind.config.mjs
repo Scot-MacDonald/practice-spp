@@ -107,12 +107,27 @@ export default {
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
-            '--tw-prose-body': 'var(--text)',
-            '--tw-prose-headings': 'var(--text)',
+            // '--tw-prose-body': 'var(--text)',
+            // '--tw-prose-headings': 'var(--text)',
             h1: {
               fontSize: '2.5rem',
               fontWeight: 'normal',
               marginBottom: '0.25em',
+            },
+            h2: {
+              background: 'rgba(126, 179, 106, 0.3)',
+              color: '#7eb36a',
+              borderRadius: '0.25rem',
+              padding: '2px 7px',
+              display: 'inline',
+              fontSize: '16px',
+              fontWeight: '400',
+            },
+            p: {
+              color: '#6b7280',
+
+              fontSize: '14px',
+              lineHeight: '24px',
             },
           },
         },

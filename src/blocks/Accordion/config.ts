@@ -5,18 +5,18 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 
+import { link } from '@/fields/link'
+
 export const AccordionBlock: Block = {
   slug: 'accordion',
   fields: [
     {
       name: 'header',
       type: 'text',
-      required: false,
     },
     {
       name: 'subline',
       type: 'text',
-      required: false,
     },
     {
       name: 'items',
@@ -31,6 +31,7 @@ export const AccordionBlock: Block = {
         {
           name: 'content',
           type: 'richText',
+          required: true,
           editor: lexicalEditor({
             features: ({ rootFeatures }) => [
               ...rootFeatures,
@@ -38,10 +39,20 @@ export const AccordionBlock: Block = {
               InlineToolbarFeature(),
             ],
           }),
-          required: true,
         },
+        {
+          name: 'enableLink',
+          type: 'checkbox',
+        },
+        link({
+          overrides: {
+            admin: {
+              condition: (_, { enableLink }) => Boolean(enableLink),
+            },
+          },
+        }),
       ],
     },
   ],
-  interfaceName: 'AccordionBlock', // Ensures TypeScript type generation
+  interfaceName: 'AccordionBlock',
 }

@@ -19,8 +19,6 @@ export function LocaleSwitcher({ className }: LocaleSwitcherProps) {
   const pathname = usePathname()
   const params = useParams()
 
-  const otherLocale = localization.locales.find((l) => l.code !== locale)
-
   async function getTranslatedSlug(
     currentLocale: string,
     newLocale: string,
@@ -31,6 +29,7 @@ export function LocaleSwitcher({ className }: LocaleSwitcherProps) {
       if (!slug) return null
       const validCollections = ['posts', 'products', 'works', 'pages']
       const col = collection && validCollections.includes(collection) ? collection : 'pages'
+
       const res = await fetch(`/api/${col}?where[slug][equals]=${slug}&locale=${currentLocale}`)
       const data = await res.json()
 
@@ -45,10 +44,7 @@ export function LocaleSwitcher({ className }: LocaleSwitcherProps) {
     return null
   }
 
-  async function onLocaleSwitch() {
-    const newLocale = otherLocale?.code as TypedLocale
-    if (!newLocale) return
-
+  async function handleLocaleChange(newLocale: TypedLocale) {
     startTransition(async () => {
       try {
         const currentPath = pathname.replace(/^\/[a-z]{2}\//, '/')
@@ -65,16 +61,12 @@ export function LocaleSwitcher({ className }: LocaleSwitcherProps) {
         if (pathParts.length === 1) {
           const pageSlug = pathParts[0]
           const translatedSlug = await getTranslatedSlug(locale, newLocale, 'pages', pageSlug)
-          router.replace(`/${translatedSlug || pageSlug}`, {
-            locale: newLocale,
-          })
+          router.replace(`/${translatedSlug || pageSlug}`, { locale: newLocale })
         } else if (pathParts.length === 2) {
           const [collection, slug] = pathParts
           if (validCollections.includes(collection)) {
             const translatedSlug = await getTranslatedSlug(locale, newLocale, collection, slug)
-            router.replace(`/${collection}/${translatedSlug || slug}`, {
-              locale: newLocale,
-            })
+            router.replace(`/${collection}/${translatedSlug || slug}`, { locale: newLocale })
           }
         } else {
           router.replace(currentPath, { locale: newLocale })
@@ -87,11 +79,23 @@ export function LocaleSwitcher({ className }: LocaleSwitcherProps) {
   }
 
   return (
-    <button
-      onClick={onLocaleSwitch}
-      className={cn('text-sm font-medium  underline hover:opacity-80 transition', className)}
-    >
-      {otherLocale?.label}
-    </button>
+    <div className={cn('flex items-center gap-1 text-sm', className)}>
+      {localization.locales
+        .sort((a, b) => a.label.localeCompare(b.label))
+        .map((loc, index, arr) => (
+          <React.Fragment key={loc.code}>
+            <button
+              onClick={() => handleLocaleChange(loc.code as TypedLocale)}
+              className={cn(
+                'transition-colors cursor-pointer',
+                loc.code === locale ? 'text-black font-medium' : 'text-gray-500 hover:text-black',
+              )}
+            >
+              {loc.label}
+            </button>
+            {index < arr.length - 1 && <span className="text-gray-400">/</span>}
+          </React.Fragment>
+        ))}
+    </div>
   )
 }

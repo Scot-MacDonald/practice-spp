@@ -30,6 +30,12 @@ export async function Footer({ locale }: { locale: TypedLocale }) {
             <div>Fax: 030 - 278 90 537</div>
           </div>
         </div>
+        <div className="text-sm leading-snug">
+          <div>KONTACT</div>
+          <div>Tel.: 030 - 282 50 52</div>
+          <div>Fax: 030 - 278 90 537</div>
+          <div>info@spp.de</div>
+        </div>
 
         <div className="flex flex-col-reverse items-start md:flex-row gap-4 md:items-center">
           <nav className="flex flex-col md:flex-row gap-4">
@@ -40,6 +46,9 @@ export async function Footer({ locale }: { locale: TypedLocale }) {
           <LocaleSwitcher className="ml-5" />
           <ThemeSelector />
         </div>
+      </div>
+      <div className="section-with-header">
+        <div className="section-header">Header Text</div>
       </div>
     </footer>
   )
