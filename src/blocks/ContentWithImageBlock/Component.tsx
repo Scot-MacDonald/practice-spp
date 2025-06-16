@@ -23,7 +23,10 @@ export const ContentWithImageBlock: React.FC<
   }
 
   return (
-    <div className="container px-4 my-16">
+    <div className="container px-4 mt-36">
+      <div className=" page-with-header">
+        <h1 className="page-header">Our practice</h1>
+      </div>
       <div className="grid grid-cols-4 lg:grid-cols-12 gap-y-8 gap-x-16">
         {columns &&
           columns.length > 0 &&

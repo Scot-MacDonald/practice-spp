@@ -15,5 +15,14 @@
   "more-pages": "Weitere Seiten",
   "auto": "Automatisch",
   "light": "Hell",
-  "dark": "Dunkel"
+  "dark": "Dunkel",
+  "consultation-hours": "Sprechzeiten",
+  "appointment": "Termin buchen",
+  "days": {
+    "monday": "montags",
+    "tuesday": "dienstags",
+    "wednesday": "mittwochs",
+    "thursday": "donnerstags",
+    "friday": "freitags"
+  }
 }

@@ -31,19 +31,19 @@ export default async function Page() {
     <div className="pt-24 pb-24">
       <PageClient />
       <div className="container px-4 mb-16">
-        <div className="prose dark:prose-invert max-w-none">
-          <h1>Doctors</h1>
+        <div className=" page-with-header">
+          <h1 className="page-header">Our Doctors</h1>
         </div>
       </div>
 
-      <div className="container mb-8">
+      {/* <div className="container mb-8">
         <PageRange
           collection="doctors"
           currentPage={doctors.page}
           limit={12}
           totalDocs={doctors.totalDocs}
         />
-      </div>
+      </div> */}
 
       <CollectionDoctor doctors={doctors.docs} />
 

@@ -21,7 +21,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ header, onClickLink }) => 
   const t = useTranslations()
 
   return (
-    <nav className="flex  gap-3">
+    <nav className="flex flex-col lg:flex-row gap-3">
       {navItems.map(({ link }, i) => (
         <CMSLink key={i} {...link} appearance="link" onClick={onClickLink} />
       ))}

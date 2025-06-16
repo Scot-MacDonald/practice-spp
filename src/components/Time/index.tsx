@@ -44,7 +44,7 @@ export default function Time() {
   if (!mounted) return null // Prevents hydration mismatch
 
   return (
-    <div className="flex items-center ">
+    <div className="flex flex-col mt-4">
       {/* Wrapper around the Clock component */}
       <div
         style={{
@@ -58,7 +58,7 @@ export default function Time() {
           format={'HH:mm:ss.A'} // Time format with AM/PM
           style={{
             fontSize: '12px',
-            color: isOpen ? '#8CC63F' : '#ec0b08',
+            color: isOpen ? '#7eb36a' : '#ec0b08',
           }}
           ticking={true}
         />

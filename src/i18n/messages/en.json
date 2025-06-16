@@ -15,5 +15,14 @@
   "more-pages": "More pages",
   "auto": "Auto",
   "light": "Light",
-  "dark": "Dark"
+  "dark": "Dark",
+  "consultation-hours": "Consultation hours",
+  "appointment": "Book appointment",
+  "days": {
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday"
+  }
 }

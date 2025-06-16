@@ -10,6 +10,7 @@ import { usePathname } from '@/i18n/routing'
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 import { MenuIcon } from 'lucide-react'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
+import { useTranslations } from 'next-intl'
 
 interface HeaderClientProps {
   header: Header
@@ -30,6 +31,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ header }) => {
   }, [headerTheme])
 
   const closeSheet = () => setOpen(false)
+  const t = useTranslations()
 
   return (
     <header
@@ -42,7 +44,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ header }) => {
           <Link href="/">
             <Logo />
           </Link>
-          <div className="hidden lg:flex">
+          <div className="pl-3 hidden lg:flex">
             <HeaderNav header={header} />
           </div>
         </div>
@@ -50,7 +52,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ header }) => {
         {/* Right: Appointment button */}
         <div className="hidden lg:flex items-center">
           <Link href="/" className="bg-[#c0eeff] px-[7px] py-[2px] rounded">
-            Appointment
+            {t('appointment')}
           </Link>
         </div>
 

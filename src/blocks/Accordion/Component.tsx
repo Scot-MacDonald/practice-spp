@@ -12,18 +12,19 @@ type Props = {
 export const AccordionBlock: React.FC<Props> = ({ className, header, subline, items }) => {
   return (
     <section
-      className={cn(
-        'container px-4 w-full grid grid-cols-1 md:grid-cols-2 gap-10 pb-16',
-        className,
-      )}
+      className={cn('container px-4 w-full grid grid-cols-1 md:grid-cols-2  pb-16', className)}
     >
+      <div className=" page-with-header">
+        {header && <h1 className="page-header"> {header}</h1>}
+      </div>
+
       {/* Left side: header and subline */}
       <div className="flex prose dark:prose-invert flex-col justify-start">
-        {header && (
-          <h2 className="inline-flex items-center text-sm font-normal mb-4 px-[7px] py-[2px] rounded w-max bg-[#d8e8d2]">
+        {/* {header && (
+          <h2 className="inline-flex items-center text-sm font-normal mb-4 px-[7px] py-[2px] rounded w-max bg-[#d8e8d2] ">
             {header}
           </h2>
-        )}
+        )} */}
         {subline && <p className=" w-3/4">{subline}</p>}
       </div>
 
@@ -34,7 +35,7 @@ export const AccordionBlock: React.FC<Props> = ({ className, header, subline, it
             key={index}
             value={`item-${index}`}
             className={cn(
-              'AccordionItem border-b-[1px] border-b-[#00000014]',
+              'AccordionItem border-b-[1px] border-b-[#00000014] ',
               'data-[state=open]:bg-[#f0f8ec]', // Background color for the whole item when open
               'transition-colors duration-300',
             )}
@@ -48,10 +49,10 @@ export const AccordionBlock: React.FC<Props> = ({ className, header, subline, it
                   'transition-colors duration-300',
                 )}
               >
-                <p className="text-lg font-medium">{item.title}</p>
+                <h2 className="text-lg text-gray-600 font-medium">{item.title}</h2>
                 <span className="AccordionChevron">
                   <svg width="24" height="24" viewBox="0 0 24 24">
-                    <g fill="none" stroke="var(--violet-10)" strokeWidth="2">
+                    <g fill="none" stroke="#7eb36a" strokeWidth="2">
                       <line x1="3" x2="21" y1="12" y2="12" />
                       <line x1="12" x2="12" y1="3" y2="21" className="AccordionVerticalLine" />
                     </g>
@@ -60,10 +61,18 @@ export const AccordionBlock: React.FC<Props> = ({ className, header, subline, it
               </Accordion.Trigger>
             </Accordion.Header>
             <Accordion.Content className="AccordionContent p-4">
-              <RichText content={item.content} enableGutter={false} enableProse={false} />
+              <RichText
+                content={item.content}
+                enableGutter={false}
+                enableProse={false}
+                className="text-gray-600"
+              />
               {item.enableLink && item.link && (
                 <div className="mt-4">
-                  <CMSLink {...item.link} />
+                  <CMSLink
+                    {...item.link}
+                    className="inline-block text-sm/6 px-4 py-2 rounded text-[#7eb36a] bg-[rgba(126,179,106,0.3)] hover:bg-[#7eb36a] hover:text-white transition-colors duration-200"
+                  />
                 </div>
               )}
             </Accordion.Content>

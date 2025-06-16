@@ -54,7 +54,6 @@ export default async function Page({ params: paramsPromise }: Args) {
 
       <RenderBlocks blocks={layout} locale={locale} />
       <section className="container px-4">
-        <h2>Visit Us</h2>
         <MinimalMap
           lat={52.5266449151552}
           lng={13.389572770327602}

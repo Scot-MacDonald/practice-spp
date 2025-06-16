@@ -17,38 +17,38 @@ export async function Footer({ locale }: { locale: TypedLocale }) {
 
   return (
     <footer className="border-t border-border">
-      <div className="container py-8 gap-8 flex flex-col md:flex-row md:justify-between">
-        <div className="flex flex-col items-start gap-2">
-          {/* <Link href="/" className="flex">
-            <Logo className="h-8" />
-          </Link> */}
-          <div className="text-sm leading-snug">
-            <div>SPP-Mitte</div>
+      <div className="container py-4 px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm mt-8">
+          {/* Column 1 */}
+          <div className="flex flex-col gap-1 text-sm leading-snug">
+            {/* <Link href="/" className="flex">
+        <Logo className="h-8" />
+      </Link> */}
+            <div className="font-semibold">SPP-Mitte</div>
             <div>Linienstraße 127 (VH, 2. OG rechts)</div>
             <div>10115 Berlin-Mitte</div>
+          </div>
+
+          {/* Column 2 */}
+          <div className="flex flex-col gap-1 text-sm leading-snug">
+            <div className="font-semibold">Kontact</div>
             <div>Tel.: 030 - 282 50 52</div>
             <div>Fax: 030 - 278 90 537</div>
+            <div>info@spp.de</div>
+          </div>
+
+          {/* Column 3 */}
+          <div className="flex flex-col gap-1 text-sm leading-snug">
+            <div className="font-semibold">Infos</div>
+            <nav className="flex flex-col gap-2">
+              {navItems.map(({ link }, i) => (
+                <CMSLink className="" key={i} {...link} />
+              ))}
+            </nav>
+            {/* <LocaleSwitcher className="ml-5" />
+      <ThemeSelector /> */}
           </div>
         </div>
-        <div className="text-sm leading-snug">
-          <div>KONTACT</div>
-          <div>Tel.: 030 - 282 50 52</div>
-          <div>Fax: 030 - 278 90 537</div>
-          <div>info@spp.de</div>
-        </div>
-
-        <div className="flex flex-col-reverse items-start md:flex-row gap-4 md:items-center">
-          <nav className="flex flex-col md:flex-row gap-4">
-            {navItems.map(({ link }, i) => {
-              return <CMSLink className="" key={i} {...link} />
-            })}
-          </nav>
-          <LocaleSwitcher className="ml-5" />
-          <ThemeSelector />
-        </div>
-      </div>
-      <div className="section-with-header">
-        <div className="section-header">Header Text</div>
       </div>
     </footer>
   )

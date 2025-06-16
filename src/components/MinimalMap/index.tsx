@@ -7,7 +7,7 @@ type Props = {
   lng: number
 }
 
-export default function MinimalMap({ lat, lng }: Props) {
+export default function LocationSection({ lat, lng }: Props) {
   const [Map, setMap] = useState<React.ReactNode>(null)
 
   useEffect(() => {
@@ -16,7 +16,6 @@ export default function MinimalMap({ lat, lng }: Props) {
       const L = await import('leaflet')
       await import('leaflet/dist/leaflet.css')
 
-      // First custom dot marker
       const dotIcon = L.divIcon({
         className: 'custom-marker',
         html: '<div class="dot"></div>',
@@ -24,15 +23,15 @@ export default function MinimalMap({ lat, lng }: Props) {
         iconAnchor: [10, 10],
       })
 
-      // Second marker using image from public/icon
       const imageIcon = L.icon({
-        iconUrl: 'media/S-Bahn-Logo.svg.webp', // ✅ from /public/icon
+        iconUrl: 'media/S-Bahn-Logo.svg.webp',
         iconSize: [20, 20],
         iconAnchor: [15, 15],
         className: 'image-marker',
       })
+
       const imageIconU = L.icon({
-        iconUrl: 'media/U-Bahn.svg', // ✅ from /public/icon
+        iconUrl: 'media/U-Bahn.svg',
         iconSize: [20, 20],
         iconAnchor: [15, 15],
         className: 'image-marker',
@@ -62,5 +61,40 @@ export default function MinimalMap({ lat, lng }: Props) {
     loadMap()
   }, [lat, lng])
 
-  return Map || <div>Loading map…</div>
+  return (
+    <section className="container py-8">
+      <div className=" page-with-header">
+        <h1 className="page-header">Visit us</h1>
+      </div>
+      <h2 className="text-md font-semibold pb-8">Öffentliche Verkehrsmittel:</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm mb-10">
+        <div className="flex flex-col">
+          <strong className="mb-1">U-Bahn</strong>
+          <span>Linie U6</span>
+          <span>Haltestelle Oranienburger Tor</span>
+        </div>
+        <div className="flex flex-col">
+          <strong className="mb-1">Straßenbahn (Tram)</strong>
+          <span>Linien M1, M5, 12</span>
+          <span>Haltestelle Oranienburger Tor</span>
+        </div>
+        <div className="flex flex-col">
+          <strong className="mb-1">S-Bahn</strong>
+          <span>Linien S1, S2</span>
+          <span>Haltestelle Oranienburger Straße</span>
+          <span>Linien S5, S7, S75, S9</span>
+          <span>Haltestelle Friedrichstraße</span>
+        </div>
+        <div className="flex flex-col">
+          <strong className="mb-1">Bus</strong>
+          <span>Linie 147</span>
+          <span>Haltestelle Friedrichstraße / Reinhardtstraße</span>
+          <span>Linie 142</span>
+          <span>Haltestelle Torstraße / U Oranienburger Tor</span>
+        </div>
+      </div>
+
+      <div>{Map || <div>Loading map…</div>}</div>
+    </section>
+  )
 }
