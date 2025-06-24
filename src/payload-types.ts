@@ -341,6 +341,10 @@ export interface ContentBlock {
  * via the `definition` "ContentWithImageBlock".
  */
 export interface ContentWithImageBlock {
+  /**
+   * Optional heading to display above the content block
+   */
+  title?: string | null;
   columns?:
     | {
         size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
@@ -806,8 +810,23 @@ export interface Form {
  * via the `definition` "AccordionBlock".
  */
 export interface AccordionBlock {
-  header?: string | null;
-  subline?: string | null;
+  title?: string | null;
+  subheading?: string | null;
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   items: {
     title: string;
     content: {
@@ -1192,6 +1211,7 @@ export interface ContentBlockSelect<T extends boolean = true> {
  * via the `definition` "ContentWithImageBlock_select".
  */
 export interface ContentWithImageBlockSelect<T extends boolean = true> {
+  title?: T;
   columns?:
     | T
     | {
@@ -1276,8 +1296,9 @@ export interface FormBlockSelect<T extends boolean = true> {
  * via the `definition` "AccordionBlock_select".
  */
 export interface AccordionBlockSelect<T extends boolean = true> {
-  header?: T;
-  subline?: T;
+  title?: T;
+  subheading?: T;
+  richText?: T;
   items?:
     | T
     | {

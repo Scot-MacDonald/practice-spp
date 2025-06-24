@@ -6,6 +6,8 @@
   "loading": "Loading, please wait...",
   "posts": "Posts",
   "post": "Post",
+  "doctors": "Doctors",
+  "doctor": "Doctor",
   "showing": "Showing",
   "of": "of",
   "search": "Search",
@@ -18,6 +20,7 @@
   "dark": "Dark",
   "consultation-hours": "Consultation hours",
   "appointment": "Book appointment",
+  "welcome": "Welcome",
   "days": {
     "monday": "Monday",
     "tuesday": "Tuesday",

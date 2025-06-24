@@ -9,14 +9,30 @@ import { link } from '@/fields/link'
 
 export const AccordionBlock: Block = {
   slug: 'accordion',
+  interfaceName: 'AccordionBlock',
   fields: [
     {
-      name: 'header',
+      name: 'title',
       type: 'text',
+      required: false,
     },
     {
-      name: 'subline',
+      name: 'subheading',
       type: 'text',
+      required: false,
+      label: 'Subheading above content', // Optional: Customize for CMS clarity
+    },
+    {
+      name: 'richText',
+      type: 'richText',
+      required: false,
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => [
+          ...rootFeatures,
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+        ],
+      }),
     },
     {
       name: 'items',
@@ -54,5 +70,4 @@ export const AccordionBlock: Block = {
       ],
     },
   ],
-  interfaceName: 'AccordionBlock',
 }

@@ -29,7 +29,7 @@ export default {
       padding: {
         DEFAULT: '1rem',
         sm: '1rem',
-        md: '0rem',
+        md: '1rem',
         lg: '0rem',
         xl: '0rem',
         '2xl': '0rem',
@@ -116,13 +116,13 @@ export default {
             },
             h2: {
               // background: 'rgba(126, 179, 106, 0.3)',
-              color: '#7eb36a',
+              // color: '#7eb36a',
               // borderRadius: '0.25rem',
               // padding: '2px 7px',
               // display: 'inline',
-              fontSize: '14px',
-              textTransform: 'uppercase',
-              fontWeight: 'normal',
+              fontSize: '16px',
+              // textTransform: 'uppercase',
+              fontWeight: 600,
               marginBottom: 0,
             },
             p: {

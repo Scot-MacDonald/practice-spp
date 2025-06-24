@@ -27,7 +27,7 @@ export function LocaleSwitcher({ className }: LocaleSwitcherProps) {
   ) {
     try {
       if (!slug) return null
-      const validCollections = ['posts', 'products', 'works', 'pages']
+      const validCollections = ['posts', 'products', 'works', 'pages', 'doctors']
       const col = collection && validCollections.includes(collection) ? collection : 'pages'
 
       const res = await fetch(`/api/${col}?where[slug][equals]=${slug}&locale=${currentLocale}`)
@@ -56,7 +56,7 @@ export function LocaleSwitcher({ className }: LocaleSwitcherProps) {
         }
 
         const pathParts = currentPath.split('/').filter(Boolean)
-        const validCollections = ['posts', 'products', 'works']
+        const validCollections = ['posts', 'products', 'works', 'doctors']
 
         if (pathParts.length === 1) {
           const pageSlug = pathParts[0]

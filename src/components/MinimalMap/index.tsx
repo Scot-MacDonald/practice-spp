@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import FiveSquares from '../FiveSquares'
 
 type Props = {
   lat: number
@@ -62,7 +63,7 @@ export default function LocationSection({ lat, lng }: Props) {
   }, [lat, lng])
 
   return (
-    <section className="container py-8">
+    <>
       <div className=" page-with-header">
         <h1 className="page-header">Visit us</h1>
       </div>
@@ -95,6 +96,10 @@ export default function LocationSection({ lat, lng }: Props) {
       </div>
 
       <div>{Map || <div>Loading map…</div>}</div>
-    </section>
+
+      <div className="container">
+        <FiveSquares />
+      </div>
+    </>
   )
 }

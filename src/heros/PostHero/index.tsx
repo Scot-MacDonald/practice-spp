@@ -15,7 +15,10 @@ export const PostHero: React.FC<{
   const t = useTranslations()
 
   return (
-    <div className="relative -mt-[10.4rem] text-white pt-8">
+    <div className="relative -mt-[10.4rem]  pt-8">
+      <div className="container page-with-header">
+        <h1 className="page-header">{title}</h1>
+      </div>
       <div className="container grid grid-cols-1 md:grid-cols-[350px_1fr] gap-12 items-center">
         {metaImage && typeof metaImage !== 'string' && (
           <div className="w-[350px] h-[350px] relative overflow-hidden shadow-lg">
@@ -40,9 +43,7 @@ export const PostHero: React.FC<{
             })}
           </div>
 
-          <h1 className="text-3xl md:text-5xl lg:text-6xl">{title}</h1>
-
-          <div className="flex flex-col md:flex-row gap-4 md:gap-16">
+          {/* <div className="flex flex-col md:flex-row gap-4 md:gap-16">
             {populatedAuthors && (
               <div className="flex flex-col gap-1">
                 <p className="text-sm">{t('author')}</p>
@@ -67,7 +68,7 @@ export const PostHero: React.FC<{
                 <time dateTime={publishedAt}>{formatDateTime(publishedAt)}</time>
               </div>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

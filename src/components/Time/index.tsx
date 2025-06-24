@@ -44,7 +44,7 @@ export default function Time() {
   if (!mounted) return null // Prevents hydration mismatch
 
   return (
-    <div className="flex flex-col mt-4">
+    <div className="flex flex-col mt-4 mb-2">
       {/* Wrapper around the Clock component */}
       <div
         style={{

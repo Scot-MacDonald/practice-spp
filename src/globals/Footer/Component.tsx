@@ -9,6 +9,7 @@ import { LocaleSwitcher } from '@/components/LocaleSwitcher'
 import { CMSLink } from '@/components/Link'
 import { TypedLocale } from 'payload'
 import { Logo } from '@/components/Logo/Logo'
+import { OpeningHours } from '@/components/OpeningHours'
 
 export async function Footer({ locale }: { locale: TypedLocale }) {
   const footer: Footer = await getCachedGlobal('footer', 1, locale)()
@@ -17,8 +18,8 @@ export async function Footer({ locale }: { locale: TypedLocale }) {
 
   return (
     <footer className="border-t border-border">
-      <div className="container py-4 px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm mt-8">
+      <div className="container py-2 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm  py-3 px-0">
           {/* Column 1 */}
           <div className="flex flex-col gap-1 text-sm leading-snug">
             {/* <Link href="/" className="flex">
@@ -45,8 +46,10 @@ export async function Footer({ locale }: { locale: TypedLocale }) {
                 <CMSLink className="" key={i} {...link} />
               ))}
             </nav>
-            {/* <LocaleSwitcher className="ml-5" />
-      <ThemeSelector /> */}
+          </div>
+          <div className="flex flex-col gap-1 text-sm leading-snug">
+            <div className="font-semibold">Opening hours</div>
+            <OpeningHours />
           </div>
         </div>
       </div>

@@ -54,15 +54,15 @@ export const OpeningHours = () => {
           return (
             <div key={day.key} className="flex items-start w-full">
               {/* Day label from translation */}
-              <div className="min-w-[90px]">{t(`days.${day.key}`)}</div>
+              <div className="w-1/2 text-left">{t(`days.${day.key}`)}</div>
 
-              {/* Morning time (right aligned) */}
-              <div className="flex-1 text-right pr-4 min-w-[110px]">
+              {/* Morning time (left aligned, 25%) */}
+              <div className="w-1/4 text-left">
                 {morning && <span className={cn(isMorningNow && 'text-[#7eb36a]')}>{morning}</span>}
               </div>
 
-              {/* Afternoon time (right aligned) */}
-              <div className="flex-1 text-right min-w-[110px]">
+              {/* Afternoon time (right aligned, 25%) */}
+              <div className="w-1/4 text-right">
                 {afternoon && (
                   <span className={cn(isAfternoonNow && 'text-[#7eb36a] font-bold')}>
                     {afternoon}
@@ -73,7 +73,6 @@ export const OpeningHours = () => {
           )
         })}
       </div>
-      <Time />
     </div>
   )
 }

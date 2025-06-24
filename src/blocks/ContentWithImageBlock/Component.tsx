@@ -13,57 +13,49 @@ export const ContentWithImageBlock: React.FC<
     id?: string
   } & Props
 > = (props) => {
-  const { columns } = props
-
-  const colsSpanClasses = {
-    full: '12',
-    half: '6',
-    oneThird: '4',
-    twoThirds: '8',
-  }
+  const { columns, title } = props
 
   return (
-    <div className="container px-4 mt-36">
-      <div className=" page-with-header">
-        <h1 className="page-header">Our practice</h1>
-      </div>
-      <div className="grid grid-cols-4 lg:grid-cols-12 gap-y-8 gap-x-16">
-        {columns &&
-          columns.length > 0 &&
-          columns.map((col, index) => {
-            const { enableLink, link, richText, size, image, useCarousel, carouselSlides } = col
+    <div className="container">
+      {title && (
+        <div className="page-with-header mb-2">
+          <h1 className="page-header">{title}</h1>
+        </div>
+      )}
 
-            return (
-              <div
-                className={cn(`col-span-4 lg:col-span-${colsSpanClasses[size!]}`, {
-                  'md:col-span-2': size !== 'full',
-                })}
-                key={index}
-              >
-                {useCarousel && carouselSlides?.length > 0 ? (
-                  <CarouselBlock slides={carouselSlides} />
-                ) : image ? (
-                  <img
-                    src={image.url}
-                    alt={image.alt || 'Column image'}
-                    className="mb-4 w-full max-w-3xl float-right"
-                    loading="lazy"
-                  />
-                ) : null}
+      {columns?.map((col, index) => {
+        const { enableLink, link, richText, image, useCarousel, carouselSlides } = col
 
-                {richText && (
-                  <RichText
-                    content={richText}
-                    enableGutter={false}
-                    className="mb-0 text-gray-500 text-[14px]"
-                  />
-                )}
+        return (
+          <div key={index} className="grid grid-cols-1 lg:grid-cols-12 mb-0 ">
+            {/* Image or Carousel - on right on desktop, on top on mobile */}
+            <div className="order-1 lg:order-2 lg:col-span-8 lg:pl-[49px] mb-2">
+              {useCarousel && carouselSlides?.length > 0 ? (
+                <CarouselBlock slides={carouselSlides} />
+              ) : image ? (
+                <img
+                  src={image.url}
+                  alt={image.alt || 'Column image'}
+                  className="w-full h-auto"
+                  loading="lazy"
+                />
+              ) : null}
+            </div>
 
-                {enableLink && <CMSLink {...link} />}
-              </div>
-            )
-          })}
-      </div>
+            {/* Text content - on left on desktop, below on mobile */}
+            <div className="order-2 lg:order-1 lg:col-span-4">
+              {richText && (
+                <RichText
+                  content={richText}
+                  enableGutter={false}
+                  className="text-gray-500 text-[14px] mb-4"
+                />
+              )}
+              {enableLink && link && <CMSLink {...link} />}
+            </div>
+          </div>
+        )
+      })}
     </div>
   )
 }

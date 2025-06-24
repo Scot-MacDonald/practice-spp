@@ -29,10 +29,7 @@ export const CardDoctor: React.FC<{
 
   return (
     <article
-      className={cn(
-        'border border-border rounded-lg overflow-hidden bg-card hover:cursor-pointer',
-        className,
-      )}
+      className={cn('border border-border rounded-lg overflow-hidden bg-card ', className)}
       ref={card.ref}
     >
       <div className="relative w-full">
@@ -61,16 +58,16 @@ export const CardDoctor: React.FC<{
         )}
         {titleToUse && (
           <div className="prose">
-            <h3>
+            <h2>
               <Link className="not-prose" href={href} ref={link.ref}>
                 {titleToUse}
               </Link>
-            </h3>
+            </h2>
           </div>
         )}
         {description && (
-          <div className="mt-2">
-            <p>{sanitizedDescription}</p>
+          <div className="mt-0">
+            <p className="text[12px]">{sanitizedDescription}</p>
           </div>
         )}
       </div>

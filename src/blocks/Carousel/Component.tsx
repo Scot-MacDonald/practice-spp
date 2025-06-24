@@ -4,7 +4,6 @@ import type { CarouselBlock as CarouselBlockProps } from 'src/payload-types'
 import React, { useEffect, useRef, useState } from 'react'
 import { cn } from 'src/utilities/cn'
 import { Media } from '@/components/Media'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 type Props = {
   className?: string
@@ -27,19 +26,11 @@ export const CarouselBlock: React.FC<Props> = ({ className, slides }) => {
     }
   }, [slides])
 
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length)
-  }
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % slides.length)
-  }
-
   if (!slides || slides.length === 0) return null
 
   return (
-    <div className={cn('container mx-auto mb-16 relative z-10', className)}>
-      <div className="relative w-full h-[600px] overflow-hidden rounded-lg">
+    <div className={cn('container px-0 mx-auto mb-2 relative z-10', className)}>
+      <div className="relative w-full h-[300px] lg:h-[600px] overflow-hidden rounded-lg">
         {slides.map((slide, index) => (
           <div
             key={index}
@@ -57,42 +48,6 @@ export const CarouselBlock: React.FC<Props> = ({ className, slides }) => {
             )}
           </div>
         ))}
-      </div>
-
-      {/* Arrows + Dots Row */}
-      <div className="flex items-center justify-between px-2 pt-2">
-        {/* Arrows on left */}
-        <div className="flex gap-2">
-          <button
-            onClick={handlePrev}
-            className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition"
-            aria-label="Previous Slide"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-          <button
-            onClick={handleNext}
-            className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition"
-            aria-label="Next Slide"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
-        </div>
-
-        {/* Dots on right */}
-        <div className="flex gap-2">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={cn(
-                'w-2 h-2 rounded-full transition-colors',
-                index === currentIndex ? 'bg-black' : 'bg-gray-400 hover:bg-gray-600',
-              )}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
       </div>
     </div>
   )

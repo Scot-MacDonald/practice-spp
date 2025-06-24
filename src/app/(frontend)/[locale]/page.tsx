@@ -53,7 +53,7 @@ export default async function Page({ params: paramsPromise }: Args) {
       <RenderHero {...hero} />
 
       <RenderBlocks blocks={layout} locale={locale} />
-      <section className="container px-4">
+      <section className="container ">
         <MinimalMap
           lat={52.5266449151552}
           lng={13.389572770327602}

@@ -90,6 +90,15 @@ export const ContentWithImage: Block = {
   interfaceName: 'ContentWithImageBlock',
   fields: [
     {
+      name: 'title',
+      type: 'text',
+      required: false,
+      localized: true,
+      admin: {
+        description: 'Optional heading to display above the content block',
+      },
+    },
+    {
       name: 'columns',
       type: 'array',
       fields: columnFields,
