@@ -4,6 +4,7 @@ import type { CarouselBlock as CarouselBlockProps } from 'src/payload-types'
 import React, { useEffect, useRef, useState } from 'react'
 import { cn } from 'src/utilities/cn'
 import { Media } from '@/components/Media'
+import RichText from '@/components/RichText'
 
 type Props = {
   className?: string
@@ -43,7 +44,7 @@ export const CarouselBlock: React.FC<Props> = ({ className, slides }) => {
 
             {slide.caption && (
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white text-sm px-4 py-2 rounded">
-                {slide.caption}
+                <RichText content={slide.caption} enableGutter={false} enableProse={false} />
               </div>
             )}
           </div>
