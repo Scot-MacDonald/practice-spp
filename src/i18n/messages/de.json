@@ -20,7 +20,9 @@
   "dark": "Dunkel",
   "consultation-hours": "Sprechzeiten",
   "appointment": "Termin buchen",
-  "welcome": "Welkommen",
+  "welcome": "Herzlich Willkommen in Ihrer Infektionspraxis SPP-Mitte",
+  "open": "Offen",
+  "closed": "Geschlossen",
   "days": {
     "monday": "montags",
     "tuesday": "dienstags",

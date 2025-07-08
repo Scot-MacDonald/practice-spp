@@ -28,15 +28,12 @@ export const CardDoctor: React.FC<{
   const href = `/${relationTo}/${slug}`
 
   return (
-    <article
-      className={cn('border border-border rounded-lg overflow-hidden bg-card ', className)}
-      ref={card.ref}
-    >
+    <article className={cn('border border-border rounded-lg p-4 ', className)} ref={card.ref}>
       <div className="relative w-full">
         {!metaImage && <div className="">No image</div>}
         {metaImage && typeof metaImage !== 'string' && <Media resource={metaImage} size="360px" />}
       </div>
-      <div className="p-4">
+      <div className="pt-4">
         {showCategories && hasCategories && (
           <div className="uppercase text-sm mb-4">
             {categories?.map((category, index) => {
@@ -58,16 +55,16 @@ export const CardDoctor: React.FC<{
         )}
         {titleToUse && (
           <div className="prose">
-            <h2>
+            <h3 className="text-base text-gray-600 font-bold">
               <Link className="not-prose" href={href} ref={link.ref}>
                 {titleToUse}
               </Link>
-            </h2>
+            </h3>
           </div>
         )}
         {description && (
           <div className="mt-0">
-            <p className="text[12px]">{sanitizedDescription}</p>
+            <p className="text-sm text-gray-600 font-medium">{sanitizedDescription}</p>
           </div>
         )}
       </div>

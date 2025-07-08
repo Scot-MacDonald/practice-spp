@@ -30,7 +30,7 @@ export const CarouselBlock: React.FC<Props> = ({ className, slides }) => {
 
   return (
     <div className={cn('container px-0 mx-auto mb-2 relative z-10', className)}>
-      <div className="relative w-full h-[300px] lg:h-[600px] overflow-hidden rounded-lg">
+      <div className="relative w-full h-[70vh] min-h-[300px] overflow-hidden rounded-lg">
         {slides.map((slide, index) => (
           <div
             key={index}

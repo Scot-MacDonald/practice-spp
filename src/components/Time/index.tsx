@@ -21,7 +21,7 @@ export default function Time() {
         1: [[800, 1300]],
         2: [
           [800, 1300],
-          [1500, 1900],
+          [1430, 1900],
         ],
         3: [[800, 1300]],
         4: [
@@ -44,7 +44,7 @@ export default function Time() {
   if (!mounted) return null // Prevents hydration mismatch
 
   return (
-    <div className="flex flex-col mt-4 mb-2">
+    <div className="flex flex-col mt-4 mb-2 ">
       {/* Wrapper around the Clock component */}
       <div
         style={{
@@ -57,7 +57,7 @@ export default function Time() {
         <Clock
           format={'HH:mm:ss.A'} // Time format with AM/PM
           style={{
-            fontSize: '12px',
+            fontSize: '16px',
             color: isOpen ? '#7eb36a' : '#ec0b08',
           }}
           ticking={true}
@@ -65,7 +65,7 @@ export default function Time() {
       </div>
       {/* Add space after the clock text */}
       <span className="ml-1"> </span>
-      <p className="text-sm text-[#a3a3a3] dark:text-[#fff]">Berlin, Germany</p>
+      <p className=" text-[#78716c]">Berlin, Germany</p>
     </div>
   )
 }

@@ -44,8 +44,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['var(--font-geist-sans)'],
-        mono: ['var(--font-geist-mono)'],
+        // sans: ['var(--font-geist-sans)'],
+        // mono: ['var(--font-geist-mono)'],
+        inter: ['var(--font-inter)', 'sans-serif'],
       },
       borderRadius: {
         sm: 'calc(var(--radius) - 4px)',
@@ -107,29 +108,44 @@ export default {
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
-            // '--tw-prose-body': 'var(--text)',
-            // '--tw-prose-headings': 'var(--text)',
+            color: '#000000',
             h1: {
               fontSize: '2.5rem',
-              fontWeight: 'normal',
+              fontWeight: '700',
               marginBottom: '0.25em',
             },
             h2: {
-              // background: 'rgba(126, 179, 106, 0.3)',
-              // color: '#7eb36a',
-              // borderRadius: '0.25rem',
-              // padding: '2px 7px',
-              // display: 'inline',
-              fontSize: '16px',
-              // textTransform: 'uppercase',
-              fontWeight: 600,
+              fontSize: '1.25rem',
+              fontWeight: '600',
               marginBottom: 0,
             },
             p: {
-              // color: '#6b7280',
-
-              fontSize: '14px',
-              lineHeight: '24px',
+              fontSize: '1rem',
+              marginBottom: 0,
+              lineHeight: '1.5',
+              color: 'oklch(44.6% 0.03 256.802)',
+            },
+          },
+        },
+        hero: {
+          css: {
+            h1: {
+              fontSize: '2.5rem',
+              fontWeight: '700',
+              marginBottom: '',
+            },
+            h2: {
+              fontSize: '1.5rem',
+              fontWeight: '600',
+              marginBottom: '',
+              marginTop: '0rem',
+            },
+            p: {
+              fontSize: '1rem',
+              fontWeight: '600',
+              marginBottom: '0',
+              marginTop: '0rem',
+              color: 'white',
             },
           },
         },

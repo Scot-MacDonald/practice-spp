@@ -79,7 +79,7 @@ export function LocaleSwitcher({ className }: LocaleSwitcherProps) {
   }
 
   return (
-    <div className={cn('flex items-center gap-1 text-sm', className)}>
+    <div className={cn('flex items-center gap-1', className)}>
       {localization.locales
         .sort((a, b) => a.label.localeCompare(b.label))
         .map((loc, index, arr) => (
@@ -88,7 +88,7 @@ export function LocaleSwitcher({ className }: LocaleSwitcherProps) {
               onClick={() => handleLocaleChange(loc.code as TypedLocale)}
               className={cn(
                 'transition-colors cursor-pointer',
-                loc.code === locale ? 'text-black font-medium' : 'text-gray-500 hover:text-black',
+                loc.code === locale ? 'text-black ' : 'text-gray-500 hover:text-black',
               )}
             >
               {loc.label}

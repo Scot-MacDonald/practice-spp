@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 const items = [
   {
@@ -6,66 +7,56 @@ const items = [
     description: [
       'Deutsche Arbeitsgemeinschaft niedergelassener Ärzte in der Versorgung HIV-Infizierter',
     ],
+    url: 'https://www.dagnae.de',
   },
   {
     title: 'DAIG',
     description: ['Deutsche AIDS-Gesellschaft e.V.'],
+    url: 'https://www.daignet.de',
   },
   {
     title: 'bng',
     description: ['Berufsverband Niedergelassener', 'Gastroenterologen Deutschlands e.V.'],
+    url: 'https://www.bng-gastro.de',
   },
   {
     title: 'AK AIDS',
     description: ['Arbeitskreis AIDS niedergelassener', 'Ärzte Berlin e.V.'],
+    url: 'https://www.ak-aids-berlin.de',
   },
   {
     title: 'DGI',
     description: ['Deutsche Gesellschaft für', 'Infektologie e.V.'],
+    url: 'https://www.dgi-net.de',
   },
 ]
 
-export default function FiveSquares() {
-  // Break items into chunks of 2
-  const rows = []
-  for (let i = 0; i < items.length; i += 3) {
-    rows.push(items.slice(i, i + 3))
-  }
-
+export default function ContactSection() {
   return (
-    <div className="container">
-      <div className="page-with-header mb-6">
-        <h1 className="page-header ">Wir sind Mitglied:</h1>
+    <div className="w-full grid grid-cols-12 border-t border-gray-300">
+      {/* 4-column section on the LEFT */}
+      <div className="col-span-12 lg:col-span-4 p-8 border-b lg:border-b-0 lg:border-r border-border">
+        <h2 className="text-2xl font-bold mb-4">Wir sind Mitglied:</h2>
+        <p>central practice bla bla bla</p>
       </div>
 
-      <div className="flex flex-col pb-4">
-        {rows.map((pair, rowIndex) => (
-          <div
-            key={rowIndex}
-            className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-4 gap-x-4 lg:gap-x-8 xl:gap-x-8 justify-end"
+      {/* 8-column section on the RIGHT with dynamic items */}
+      <div className="col-span-12 lg:col-span-8 p-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 ">
+        {items.map((item, i) => (
+          <Link
+            key={i}
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border rounded-lg p-4 flex flex-col bg-white hover:bg-[#f0f8ec] transition-colors min-h-[138px] no-underline"
           >
-            {/* Blank columns for lg and up */}
-            <div className="hidden lg:block"></div>
-
-            {/* Items */}
-            {pair.map((item, i) => (
-              <div
-                key={i}
-                className="relative bg-white border-t border-gray-200 p-3 flex flex-col justify-between min-h-[100px] hover:bg-[#f0f8ec] transition-colors"
-              >
-                <div>
-                  <h3 className="text-sm font-semibold text-gray-800 mb-1">{item.title}</h3>
-                  <p className="text-sm text-gray-600 leading-snug">
-                    {item.description.map((line, j) => (
-                      <span key={j} className="block">
-                        {line}
-                      </span>
-                    ))}
-                  </p>
-                </div>
-              </div>
+            <h2 className="text-xl font-bold mb-1 text-gray-800">{item.title}</h2>
+            {item.description.map((line, j) => (
+              <span key={j} className="text-gray-600">
+                {line}
+              </span>
             ))}
-          </div>
+          </Link>
         ))}
       </div>
     </div>

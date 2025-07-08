@@ -13,6 +13,21 @@
     font-weight: auto;
   }
 
+  @layer base {
+    body {
+      color: #a3a3a3;
+    }
+  }
+
+  .prose :where(p):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+    margin-top: 0em;
+    margin-bottom: 0em;
+  }
+  .prose :where(p):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+    margin-top: 0em;
+    margin-bottom: 05em;
+  }
+
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
@@ -138,7 +153,10 @@ button,
 h3 {
   all: unset;
 }
-
+h2 {
+  font-size: 1.25rem !important;
+  font-weight: 600;
+}
 /* Accordion styles */
 .AccordionRoot {
   /* max-width: 640px; */
@@ -315,7 +333,7 @@ html.lenis html.lenis body {
   background-color: white;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  font-size: 12px;
+  font-size: 1.125rem;
 }
 
 .page-with-header {
@@ -330,29 +348,30 @@ html.lenis html.lenis body {
 
 .page-header {
   position: absolute;
-  top: -11px; /* raise it over the border */
+  top: -13px; /* raise it over the border */
   left: 0;
   padding-right: 16px;
   background-color: white;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  font-size: 16px;
+  font-size: 1.125rem;
 }
 
 .age-with-header {
   box-sizing: border-box;
   position: relative;
 
-  color: #7eb36a;
-  border-top: 0.5px solid #7eb36a;
+  color: #4b5563;
+  border-top: 0.5px solid #4b5563;
   margin-top: 32px;
   padding-top: 24px;
 }
 
 .age-header {
   position: absolute;
-  top: -11px; /* raise it over the border */
+  top: -17px; /* raise it over the border */
   left: 0;
   padding-right: 16px;
   background-color: white;
+  font-size: 22px;
 }

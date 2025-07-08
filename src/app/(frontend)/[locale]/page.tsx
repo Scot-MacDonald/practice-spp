@@ -46,14 +46,14 @@ export default async function Page({ params: paramsPromise }: Args) {
   const { hero, layout } = page
 
   return (
-    <article className=" pb-24">
+    <article className=" ">
       <PageClient />
       <PayloadRedirects disableNotFound url={url} />
 
       <RenderHero {...hero} />
 
       <RenderBlocks blocks={layout} locale={locale} />
-      <section className="container ">
+      <section className="">
         <MinimalMap
           lat={52.5266449151552}
           lng={13.389572770327602}

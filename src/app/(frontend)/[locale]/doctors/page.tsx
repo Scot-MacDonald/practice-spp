@@ -30,7 +30,7 @@ export default async function Page() {
   return (
     <div className="pt-24 pb-24">
       <PageClient />
-      <div className="container px-4 mb-16">
+      <div className="container  mb-16">
         <div className=" page-with-header">
           <h1 className="page-header">Our Doctors</h1>
         </div>
@@ -44,10 +44,9 @@ export default async function Page() {
           totalDocs={doctors.totalDocs}
         />
       </div> */}
-
-      <CollectionDoctor doctors={doctors.docs} />
-
       <div className="container">
+        <CollectionDoctor doctors={doctors.docs} />
+
         {doctors.totalPages > 1 && doctors.page && (
           <Pagination page={doctors.page} totalPages={doctors.totalPages} />
         )}

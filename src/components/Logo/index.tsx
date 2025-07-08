@@ -7,17 +7,17 @@ interface Props {
   priority?: 'auto' | 'high' | 'low'
 }
 
-export const Logo = (props: Props) => {
+const Logo = (props: Props) => {
   const { loading: loadingFromProps, priority: priorityFromProps, className } = props
 
   const loading = loadingFromProps || 'lazy'
   const priority = priorityFromProps || 'low'
 
   return (
-    <div className={clsx('flex items-center ', className)}>
+    <div className={clsx('flex items-center', className)}>
       {/* eslint-disable @next/next/no-img-element */}
       <img
-        alt="Payload Logo"
+        alt="SPP-Mitte Logo"
         width={193}
         height={54}
         loading={loading}
@@ -30,3 +30,5 @@ export const Logo = (props: Props) => {
     </div>
   )
 }
+
+export default Logo

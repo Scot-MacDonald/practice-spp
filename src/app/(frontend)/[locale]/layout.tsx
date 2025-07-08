@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 
 import { cn } from 'src/utilities/cn'
-import { GeistMono } from 'geist/font/mono'
-import { GeistSans } from 'geist/font/sans'
+// import { GeistMono } from 'geist/font/mono'
+// import { GeistSans } from 'geist/font/sans'
+import { Inter } from 'next/font/google'
 import React from 'react'
 
 import { AdminBar } from '@/components/AdminBar'
@@ -30,6 +31,13 @@ type Args = {
   }>
 }
 
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  display: 'swap',
+  variable: '--font-inter',
+})
+
 export default async function RootLayout({ children, params }: Args) {
   const { locale } = await params
   const currentLocale = localization.locales.find((loc) => loc.code === locale)
@@ -45,7 +53,7 @@ export default async function RootLayout({ children, params }: Args) {
 
   return (
     <html
-      className={cn(GeistSans.variable, GeistMono.variable)}
+      className={cn(inter.variable, 'font-inter')}
       lang={locale}
       dir={direction}
       suppressHydrationWarning

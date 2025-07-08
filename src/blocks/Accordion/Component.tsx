@@ -20,8 +20,8 @@ export const AccordionBlock: React.FC<Props> = ({
   items,
 }) => {
   return (
-    <section className={cn('container w-full flex flex-col items-start pb-0', className)}>
-      {/* Title above both columns */}
+    <section className={cn(' ', className)}>
+      {/* Title above both columns
       {title && (
         <div className="page-with-header w-full">
           <h1 className="page-header">{title}</h1>
@@ -29,24 +29,20 @@ export const AccordionBlock: React.FC<Props> = ({
       )}
 
       {/* Subheading */}
-      {subheading && <h2 className="text-md font-semibold pb-0">{subheading}</h2>}
+      {/* {subheading && <h2 className="text-md font-semibold pb-0">{subheading}</h2>} } */}
 
       {/* Two-column layout: stacks on small screens */}
-      <div className="w-full flex flex-col lg:flex-row justify-between gap-8 items-start">
+      <div className="grid grid-cols-12 border-t border-border">
         {/* Left: RichText (1/3 width) */}
-        <div className="w-full lg:w-1/3">
-          {richText && (
-            <RichText
-              content={richText}
-              enableGutter={false}
-              className="text-gray-500 text-[14px] mb-4"
-            />
-          )}
+        <div className=" col-span-4 p-8 border-r border-border">
+          <h2 className="mb-4">{title}</h2>
+          <h3 className="font-bold">{subheading}</h3>
+          {richText && <RichText content={richText} enableGutter={false} className="  mb-4" />}
         </div>
 
         {/* Right: Accordion (2/3 width, but content max 80%) */}
-        <div className="w-full lg:w-2/3 flex justify-start lg:justify-end">
-          <div className="w-full lg:max-w-[80%]">
+        <div className="col-span-8 p-8 ">
+          <div className="w-full max-w-[50%] flex flex-col items-end">
             <Accordion.Root type="multiple" className="AccordionRoot">
               {items?.map((item, index) => (
                 <Accordion.Item

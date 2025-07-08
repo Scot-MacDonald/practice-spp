@@ -53,20 +53,21 @@ export const DoctorBlock: React.FC<
   }
 
   return (
-    <div className="container my-16" id={`block-${id}`}>
-      <div className=" page-with-header">
-        <h1 className="page-header">Unser Team</h1>
-      </div>
-      {introContent && (
-        <div className="mb-16 ">
-          <RichText
-            className="ms-0 max-w-[48rem] text-gray-500"
-            content={introContent}
-            enableGutter={false}
-          />
+    <div className="" id={`block-${id}`}>
+      {/* <div className=" page-with-header">
+        <h2 className="page-header">Unser Team</h2>
+      </div> */}
+
+      <div className="w-full grid grid-cols-12 border-t border-border">
+        <div className="col-span-4 p-8 border-r border-border">
+          {introContent && <RichText className="" content={introContent} enableGutter={false} />}
         </div>
-      )}
-      <CollectionDoctor doctors={doctors} />
+
+        {/* Doctors Collection */}
+        <div className="col-span-8 p-8 ">
+          <CollectionDoctor doctors={doctors} />
+        </div>
+      </div>
     </div>
   )
 }

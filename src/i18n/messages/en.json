@@ -20,7 +20,9 @@
   "dark": "Dark",
   "consultation-hours": "Consultation hours",
   "appointment": "Book appointment",
-  "welcome": "Welcome",
+  "welcome": "Welcome to your specialist infectious disease practice, SPP-Mitte.",
+  "open": "Open",
+  "closed": "Closed",
   "days": {
     "monday": "Monday",
     "tuesday": "Tuesday",

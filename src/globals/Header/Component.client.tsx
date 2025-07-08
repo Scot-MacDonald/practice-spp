@@ -4,7 +4,7 @@ import { useHeaderTheme } from '@/providers/HeaderTheme'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import type { Header } from '@/payload-types'
-import { Logo } from '@/components/Logo/Logo'
+import Logo from '@/components/Logo'
 import { HeaderNav } from './Nav'
 import { usePathname } from '@/i18n/routing'
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from '@/components/ui/sheet'
@@ -51,19 +51,24 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ header }) => {
 
         {/* Right: Appointment button */}
         <div className="hidden lg:flex items-center">
-          <Link href="/" className="bg-[#c0eeff] px-[7px] py-[2px] rounded">
+          <p className="text-xs pr-2">
+            <span>Our appointments are managed</span>
+            <br />
+            <span>through the Doctolib app.</span>
+          </p>
+          <Link href="/" className="bg-[#c0eeff]  px-4 py-2 rounded">
             {t('appointment')}
           </Link>
         </div>
 
         {/* Mobile Menu */}
         <div className="flex lg:hidden items-center gap-3">
-          <Link href="/" className="bg-[#c0eeff] px-[7px] py-[2px] rounded">
-            Appointment
+          <Link href="/" className="bg-[#c0eeff] px-2 py-1 rounded">
+            {t('appointment')}
           </Link>
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger className="p-2">
-              <MenuIcon className="w-6 h-6" />
+              <MenuIcon className="w-8 h-8" />
             </SheetTrigger>
             <SheetContent side="right" className="w-64 flex flex-col gap-4 p-4">
               <SheetHeader>
