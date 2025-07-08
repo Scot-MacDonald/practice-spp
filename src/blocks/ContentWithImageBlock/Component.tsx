@@ -40,7 +40,7 @@ export const ContentWithImageBlock: React.FC<
             {/* Image or Carousel */}
             <div className="col-span-8 p-8 border-r border-border">
               {showCarousel ? (
-                <CarouselBlock slides={safeSlides} />
+                <CarouselBlock blockType="carousel" slides={safeSlides} />
               ) : image ? (
                 <img
                   src={image.url}
