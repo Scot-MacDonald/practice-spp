@@ -57,12 +57,12 @@ export default async function Doctor({ params: paramsPromise }: Args) {
       <div className="flex flex-col items-center gap-4 pt-8">
         <div className="container">
           <RichText className="max-w-[48rem]" content={doctor.content} enableGutter={false} />
-          {doctor.relatedDoctors && doctor.relatedDoctors.length > 0 && (
+          {/* {doctor.relatedDoctors && doctor.relatedDoctors.length > 0 && (
             <RelatedPosts
               className="mt-12 max-w-[52rem] lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
               docs={doctor.relatedDoctors.filter((doc) => typeof doc === 'object')}
             />
-          )}
+          )} */}
         </div>
 
         {/* {doctor.relatedDoctors && doctor.relatedDoctors.length > 0 && (
