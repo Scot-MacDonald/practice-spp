@@ -4,7 +4,7 @@ import RichText from '@/components/RichText'
 import { CMSLink } from '@/components/Link'
 import { CarouselBlock } from '@/blocks/Carousel/Component'
 
-import type { Page } from '@/payload-types'
+import type { Page, Media } from '@/payload-types'
 
 type Props = Extract<Page['layout'][0], { blockType: 'contentWithImage' }>
 
@@ -26,11 +26,16 @@ export const ContentWithImageBlock: React.FC<
       {columns?.map((col, index) => {
         const { enableLink, link, richText, image, useCarousel, carouselSlides } = col
 
-        // Strip out caption from each slide to avoid type issues and because we don't want captions
-        const safeSlides = (carouselSlides || []).map(({ caption, ...slide }) => slide)
-
         const showCarousel =
           useCarousel && Array.isArray(carouselSlides) && carouselSlides.length > 0
+
+        const safeSlides =
+          showCarousel && carouselSlides
+            ? carouselSlides.map((s) => ({
+                media: s.media,
+                id: s.id || undefined,
+              }))
+            : []
 
         return (
           <div
@@ -41,9 +46,9 @@ export const ContentWithImageBlock: React.FC<
             <div className="col-span-8 p-8 border-r border-border">
               {showCarousel ? (
                 <CarouselBlock blockType="carousel" slides={safeSlides} />
-              ) : image ? (
+              ) : typeof image === 'object' && image !== null ? (
                 <img
-                  src={image.url}
+                  src={image?.url ?? undefined}
                   alt={image.alt || 'Column image'}
                   className="w-full h-auto"
                   loading="lazy"

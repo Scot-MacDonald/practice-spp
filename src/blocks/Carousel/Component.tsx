@@ -1,14 +1,20 @@
 'use client'
 
-import type { CarouselBlock as CarouselBlockProps } from 'src/payload-types'
+import type { Media } from 'src/payload-types'
 import React, { useEffect, useRef, useState } from 'react'
 import { cn } from 'src/utilities/cn'
-import { Media } from '@/components/Media'
-import RichText from '@/components/RichText'
+import { Media as MediaComponent } from '@/components/Media'
+
+type Slide = {
+  media: string | Media
+  id?: string
+}
 
 type Props = {
+  blockType: 'carousel'
   className?: string
-} & CarouselBlockProps
+  slides: Slide[]
+}
 
 export const CarouselBlock: React.FC<Props> = ({ className, slides }) => {
   const autoplayDelay = 5000
@@ -40,9 +46,9 @@ export const CarouselBlock: React.FC<Props> = ({ className, slides }) => {
               index === currentIndex ? 'opacity-100 z-20' : 'opacity-0 z-10 pointer-events-none',
             )}
           >
-            {slide.media && <Media resource={slide.media} className="w-full h-full object-cover" />}
-
-            {/* Caption removed as requested */}
+            {slide.media && (
+              <MediaComponent resource={slide.media} className="w-full h-full object-cover" />
+            )}
           </div>
         ))}
       </div>
