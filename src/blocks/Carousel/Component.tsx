@@ -1,3 +1,4 @@
+// src/blocks/Carousel/Component.tsx
 'use client'
 
 import type { CarouselBlock as CarouselBlockProps } from 'src/payload-types'
