@@ -81,7 +81,7 @@ export const ContentWithImageBlock: React.FC<
             {/* Image or Carousel - on right on desktop, on top on mobile */}
             <div className=" col-span-8 p-8 border-r border-border">
               {useCarousel && carouselSlides?.length > 0 ? (
-                <CarouselBlock slides={carouselSlides} />
+                <CarouselBlock slides={carouselSlides || []} />
               ) : image ? (
                 <img
                   src={image.url}
