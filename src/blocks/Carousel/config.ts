@@ -1,11 +1,11 @@
-import type { Block } from 'payload'
+import { Block } from 'payload'
 import {
-  lexicalEditor,
   FixedToolbarFeature,
   InlineToolbarFeature,
+  lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 
-export const Carousel: Block = {
+export const CarouselBlock: Block = {
   slug: 'carousel',
   interfaceName: 'CarouselBlock',
   fields: [
@@ -23,11 +23,8 @@ export const Carousel: Block = {
         {
           name: 'caption',
           type: 'richText',
-          localized: true,
           required: false,
-          admin: {
-            elements: ['link', 'bold', 'italic'],
-          },
+          localized: true,
           editor: lexicalEditor({
             features: ({ rootFeatures }) => [
               ...rootFeatures,
