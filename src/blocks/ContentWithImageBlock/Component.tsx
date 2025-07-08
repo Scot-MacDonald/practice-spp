@@ -29,6 +29,12 @@ export const ContentWithImageBlock: React.FC<
         const showCarousel =
           useCarousel && Array.isArray(carouselSlides) && carouselSlides.length > 0
 
+        // If captions could be strings (incorrectly), filter those out
+        const safeSlides =
+          showCarousel && carouselSlides
+            ? carouselSlides.filter((slide) => typeof slide.caption !== 'string')
+            : []
+
         return (
           <div
             key={index}
@@ -37,7 +43,7 @@ export const ContentWithImageBlock: React.FC<
             {/* Image or Carousel */}
             <div className="col-span-8 p-8 border-r border-border">
               {showCarousel ? (
-                <CarouselBlock slides={carouselSlides} />
+                <CarouselBlock slides={safeSlides} />
               ) : image ? (
                 <img
                   src={image.url}

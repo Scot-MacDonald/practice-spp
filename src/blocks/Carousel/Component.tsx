@@ -1,4 +1,3 @@
-// src/blocks/Carousel/Component.tsx
 'use client'
 
 import type { CarouselBlock as CarouselBlockProps } from 'src/payload-types'
@@ -45,7 +44,11 @@ export const CarouselBlock: React.FC<Props> = ({ className, slides }) => {
 
             {slide.caption && (
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white text-sm px-4 py-2 rounded">
-                <RichText content={slide.caption} enableGutter={false} enableProse={false} />
+                {typeof slide.caption === 'string' ? (
+                  slide.caption
+                ) : (
+                  <RichText content={slide.caption} enableGutter={false} enableProse={false} />
+                )}
               </div>
             )}
           </div>
