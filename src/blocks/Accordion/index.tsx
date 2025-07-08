@@ -1,2 +1,2 @@
 export { AccordionBlock } from './Component'
-export { Accordion } from './config'
+export { AccordionBlock as Accordion } from './config'
