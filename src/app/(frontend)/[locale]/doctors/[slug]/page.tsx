@@ -2,7 +2,7 @@
 
 import type { Metadata } from 'next'
 
-import { RelatedPosts } from '@/blocks/RelatedPosts/Component'
+// import { RelatedPosts } from '@/blocks/RelatedPosts/Component'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
@@ -65,12 +65,12 @@ export default async function Doctor({ params: paramsPromise }: Args) {
           )}
         </div>
 
-        {doctor.relatedDoctors && doctor.relatedDoctors.length > 0 && (
+        {/* {doctor.relatedDoctors && doctor.relatedDoctors.length > 0 && (
           <RelatedPosts
             className="mt-12 max-w-[52rem] lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
             docs={doctor.relatedDoctors.filter((doc) => typeof doc === 'object')}
           />
-        )}
+        )} */}
       </div>
     </article>
   )
