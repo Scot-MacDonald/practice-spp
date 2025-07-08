@@ -9,6 +9,7 @@ const localization = {
       // Although others have made good points about why it is good to have them in English:
       // such as the user type, and the order of languages. See https://ux.stackexchange.com/q/3592/144485
       label: 'en',
+      rtl: false,
     },
     // {
     //   code: 'tr',
@@ -21,6 +22,7 @@ const localization = {
     {
       code: 'de',
       label: 'de',
+      rtl: false,
     },
     // {
     //   code: 'ja',
