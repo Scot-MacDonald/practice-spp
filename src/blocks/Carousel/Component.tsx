@@ -42,15 +42,7 @@ export const CarouselBlock: React.FC<Props> = ({ className, slides }) => {
           >
             {slide.media && <Media resource={slide.media} className="w-full h-full object-cover" />}
 
-            {slide.caption && (
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white text-sm px-4 py-2 rounded">
-                {typeof slide.caption === 'string' ? (
-                  slide.caption
-                ) : (
-                  <RichText content={slide.caption} enableGutter={false} enableProse={false} />
-                )}
-              </div>
-            )}
+            {/* Caption removed as requested */}
           </div>
         ))}
       </div>

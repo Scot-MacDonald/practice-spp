@@ -26,14 +26,11 @@ export const ContentWithImageBlock: React.FC<
       {columns?.map((col, index) => {
         const { enableLink, link, richText, image, useCarousel, carouselSlides } = col
 
+        // Strip out caption from each slide to avoid type issues and because we don't want captions
+        const safeSlides = (carouselSlides || []).map(({ caption, ...slide }) => slide)
+
         const showCarousel =
           useCarousel && Array.isArray(carouselSlides) && carouselSlides.length > 0
-
-        // If captions could be strings (incorrectly), filter those out
-        const safeSlides =
-          showCarousel && carouselSlides
-            ? carouselSlides.filter((slide) => typeof slide.caption !== 'string')
-            : []
 
         return (
           <div
