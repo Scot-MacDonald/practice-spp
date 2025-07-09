@@ -1,14 +1,11 @@
-// src/blocks/Carousel/config.ts
 import type { Block } from 'payload'
-import {
-  FixedToolbarFeature,
-  InlineToolbarFeature,
-  lexicalEditor,
-} from '@payloadcms/richtext-lexical'
 
-export const CarouselBlock: Block = {
+export const Carousel: Block = {
   slug: 'carousel',
-  interfaceName: 'CarouselBlock',
+  labels: {
+    singular: 'Carousel',
+    plural: 'Carousels',
+  },
   fields: [
     {
       name: 'slides',
@@ -21,20 +18,14 @@ export const CarouselBlock: Block = {
           relationTo: 'media',
           required: true,
         },
+        // Optional caption field
         {
           name: 'caption',
           type: 'richText',
           required: false,
-          localized: true,
-          editor: lexicalEditor({
-            features: ({ rootFeatures }) => [
-              ...rootFeatures,
-              FixedToolbarFeature(),
-              InlineToolbarFeature(),
-            ],
-          }),
         },
       ],
     },
   ],
+  interfaceName: 'CarouselBlock', // Optional: links to types
 }
