@@ -14,6 +14,7 @@ type Props = {
   blockType: 'carousel'
   className?: string
   slides: Slide[]
+  locale?: string
 }
 
 export const CarouselBlock: React.FC<Props> = ({ className, slides }) => {
