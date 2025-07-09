@@ -1,8 +1,12 @@
 import type { CollectionAfterChangeHook } from 'payload'
 import { revalidatePath } from 'next/cache'
-import type { News } from '../../../payload-types'
+import type { News as BaseNews } from '../../../payload-types'
 
-export const revalidateNews: CollectionAfterChangeHook<News> = ({
+type NewsWithStatus = BaseNews & {
+  _status?: string
+}
+
+export const revalidateNews: CollectionAfterChangeHook<NewsWithStatus> = ({
   doc,
   previousDoc,
   req: { payload },
