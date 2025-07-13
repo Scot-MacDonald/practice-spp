@@ -14,7 +14,6 @@ import { nestedDocsPlugin } from '@payloadcms/plugin-nested-docs'
 import { redirectsPlugin } from '@payloadcms/plugin-redirects'
 import { seoPlugin } from '@payloadcms/plugin-seo'
 import { searchPlugin } from '@payloadcms/plugin-search'
-import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 
 // Rich Text Editor
 import {
@@ -203,14 +202,6 @@ export default buildConfig({
       searchOverrides: {
         fields: ({ defaultFields }) => [...defaultFields, ...searchFields],
       },
-    }),
-
-    vercelBlobStorage({
-      token: process.env.BLOB_READ_WRITE_TOKEN,
-      collections: {
-        media: true, // ✅ Enables Blob for your Media collection
-      },
-      clientUploads: true,
     }),
   ],
 

@@ -19,7 +19,8 @@
     "db:backup": "mkdir -p dataDump && docker compose exec mongo mongodump --out=/data/db/backup && docker compose cp mongo:/data/db/backup ./dataDump",
     "db:backup:gz": "mkdir -p dataDump && docker compose exec mongo sh -c 'mongodump --archive --gzip' > ./dataDump/backup-$(date +%Y%m%d_%H%M%S).gz",
     "db:restore": "docker compose cp ./dataDump/backup mongo:/data/db/backup && docker compose exec mongo mongorestore /data/db/backup",
-    "db:restore:gz": "docker compose exec -i mongo sh -c 'mongorestore --archive --gzip' < ./dataDump/backup.gz"
+    "db:restore:gz": "docker compose exec -i mongo sh -c 'mongorestore --archive --gzip' < ./dataDump/backup.gz",
+    "ci": "pnpm install --frozen-lockfile && pnpm lint && pnpm build"
   },
   "dependencies": {
     "@lexical/react": "^0.28.0",
