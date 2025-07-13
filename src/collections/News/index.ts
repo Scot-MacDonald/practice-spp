@@ -12,7 +12,7 @@ export const News: CollectionConfig = {
   slug: 'news',
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'publishedAt', 'updatedAt'],
+    defaultColumns: ['title', 'slug', 'publishedAt', 'updatedAt'],
   },
   access: {
     read: () => true,
@@ -28,6 +28,29 @@ export const News: CollectionConfig = {
       required: true,
     },
     {
+      name: 'slug',
+      type: 'text',
+      required: true,
+      unique: true,
+      admin: {
+        position: 'sidebar',
+      },
+      hooks: {
+        beforeValidate: [
+          ({ data, value }) => {
+            if (value) return value
+            const rawTitle = typeof data?.title === 'string' ? data.title : data?.title?.en || '' // adjust locale if needed
+            return rawTitle
+              .toLowerCase()
+              .replace(/\s+/g, '-')
+              .replace(/[^\w-]+/g, '')
+              .replace(/--+/g, '-')
+              .replace(/^-+|-+$/g, '')
+          },
+        ],
+      },
+    },
+    {
       name: 'content',
       type: 'richText',
       localized: true,
@@ -35,7 +58,7 @@ export const News: CollectionConfig = {
         features: ({ rootFeatures }) => [
           ...rootFeatures,
           HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-          BlocksFeature({ blocks: [] }), // Add custom blocks later if needed
+          BlocksFeature({ blocks: [] }),
           FixedToolbarFeature(),
           InlineToolbarFeature(),
           HorizontalRuleFeature(),
@@ -54,7 +77,7 @@ export const News: CollectionConfig = {
       },
       hooks: {
         beforeChange: [
-          ({ value, siblingData }) => {
+          ({ value }) => {
             if (!value) {
               return new Date()
             }

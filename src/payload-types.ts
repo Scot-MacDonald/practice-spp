@@ -907,6 +907,7 @@ export interface CarouselBlock {
 export interface News {
   id: string;
   title: string;
+  slug: string;
   content: {
     root: {
       type: string;
@@ -1468,6 +1469,7 @@ export interface DoctorsSelect<T extends boolean = true> {
  */
 export interface NewsSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   content?: T;
   publishedAt?: T;
   updatedAt?: T;
