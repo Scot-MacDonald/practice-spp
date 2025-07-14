@@ -123,8 +123,8 @@ export const seed = async ({
   await payload.update({
     collection: 'media',
     id: image1Doc.id,
-    data: image1('tr'),
-    locale: 'tr',
+    data: image1('de'),
+    locale: 'de',
     filePath: path.resolve(dirname, 'image-post1.webp'),
     req,
   })
@@ -139,8 +139,8 @@ export const seed = async ({
   await payload.update({
     collection: 'media',
     id: image2Doc.id,
-    data: image2('tr'),
-    locale: 'tr',
+    data: image2('de'),
+    locale: 'de',
     filePath: path.resolve(dirname, 'image-post2.webp'),
     req,
   })
@@ -155,8 +155,8 @@ export const seed = async ({
   await payload.update({
     collection: 'media',
     id: image3Doc.id,
-    data: image2('tr'),
-    locale: 'tr',
+    data: image2('de'),
+    locale: 'de',
     filePath: path.resolve(dirname, 'image-post3.webp'),
     req,
   })
@@ -171,8 +171,8 @@ export const seed = async ({
   await payload.update({
     collection: 'media',
     id: imageHomeDoc.id,
-    data: image2('tr'),
-    locale: 'tr',
+    data: image2('de'),
+    locale: 'de',
     filePath: path.resolve(dirname, 'image-hero1.webp'),
     req,
   })
@@ -204,7 +204,7 @@ export const seed = async ({
   await payload.update({
     collection: 'categories',
     id: technologyCategory.id,
-    locale: 'tr',
+    locale: 'de',
     data: {
       title: 'Teknoloji',
     },
@@ -222,7 +222,7 @@ export const seed = async ({
   await payload.update({
     collection: 'categories',
     id: newsCategory.id,
-    locale: 'tr',
+    locale: 'de',
     data: {
       title: 'Haberler',
     },
@@ -240,7 +240,7 @@ export const seed = async ({
   await payload.update({
     collection: 'categories',
     id: financeCategory.id,
-    locale: 'tr',
+    locale: 'de',
     data: {
       title: 'Finans',
     },
@@ -258,7 +258,7 @@ export const seed = async ({
   await payload.update({
     collection: 'categories',
     id: designCategory.id,
-    locale: 'tr',
+    locale: 'de',
     data: {
       title: 'Tasarım',
     },
@@ -276,7 +276,7 @@ export const seed = async ({
   await payload.update({
     collection: 'categories',
     id: softwareCategory.id,
-    locale: 'tr',
+    locale: 'de',
     data: {
       title: 'Yazılım',
     },
@@ -294,7 +294,7 @@ export const seed = async ({
   await payload.update({
     collection: 'categories',
     id: engineeringCategory.id,
-    locale: 'tr',
+    locale: 'de',
     data: {
       title: 'Mühendislik',
     },
@@ -327,7 +327,7 @@ export const seed = async ({
         .replace(/"\{\{IMAGE_2\}\}"/g, String(image2ID))
         .replace(/"\{\{AUTHOR\}\}"/g, String(demoAuthorID)),
     ),
-    locale: 'tr',
+    locale: 'de',
     req,
   })
 
@@ -351,7 +351,7 @@ export const seed = async ({
         .replace(/"\{\{IMAGE_2\}\}"/g, String(image3ID))
         .replace(/"\{\{AUTHOR\}\}"/g, String(demoAuthorID)),
     ),
-    locale: 'tr',
+    locale: 'de',
     req,
   })
 
@@ -375,7 +375,7 @@ export const seed = async ({
         .replace(/"\{\{IMAGE_2\}\}"/g, String(image1ID))
         .replace(/"\{\{AUTHOR\}\}"/g, String(demoAuthorID)),
     ),
-    locale: 'tr',
+    locale: 'de',
     req,
   })
 
@@ -422,9 +422,9 @@ export const seed = async ({
   await payload.update({
     collection: 'pages',
     id: homePage.id,
-    locale: 'tr',
+    locale: 'de',
     data: JSON.parse(
-      JSON.stringify(home('tr'))
+      JSON.stringify(home('de'))
         .replace(/"\{\{IMAGE_1\}\}"/g, String(imageHomeID))
         .replace(/"\{\{IMAGE_2\}\}"/g, String(image2ID)),
     ),
@@ -444,7 +444,7 @@ export const seed = async ({
   await payload.update({
     collection: 'forms',
     id: contactForm.id,
-    locale: 'tr',
+    locale: 'de',
     data: {
       redirect: contactFormData_es.redirect,
       title: contactFormData_es.title,
@@ -488,9 +488,9 @@ export const seed = async ({
   await payload.update({
     collection: 'pages',
     id: contactPage.id,
-    locale: 'tr',
+    locale: 'de',
     data: JSON.parse(
-      JSON.stringify(contactPageData('tr')).replace(
+      JSON.stringify(contactPageData('de')).replace(
         /"\{\{CONTACT_FORM_ID\}\}"/g,
         String(contactFormID),
       ),
@@ -504,7 +504,7 @@ export const seed = async ({
 
   const header = await payload.updateGlobal({
     slug: 'header',
-    locale: 'en',
+    locale: 'de',
     data: {
       navItems: [
         {
@@ -531,7 +531,7 @@ export const seed = async ({
 
   await payload.updateGlobal({
     slug: 'header',
-    locale: 'tr',
+    locale: 'de',
     data: {
       navItems: [
         {
@@ -562,7 +562,7 @@ export const seed = async ({
 
   const footer = await payload.updateGlobal({
     slug: 'footer',
-    locale: 'en',
+    locale: 'de',
     data: {
       navItems: [
         {
@@ -594,7 +594,7 @@ export const seed = async ({
   })
   await payload.updateGlobal({
     slug: 'footer',
-    locale: 'tr',
+    locale: 'de',
     data: {
       navItems: [
         {

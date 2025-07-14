@@ -8,7 +8,6 @@ import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
 import { LocaleSwitcher } from '@/components/LocaleSwitcher'
 import { CMSLink } from '@/components/Link'
 import { TypedLocale } from 'payload'
-import { Logo } from '@/components/Logo'
 import { OpeningHours } from '@/components/OpeningHours'
 
 export async function Footer({ locale }: { locale: TypedLocale }) {

@@ -3,11 +3,9 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 
-// Adapters
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { resendAdapter } from '@payloadcms/email-resend'
 
-// Plugins
 import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
 import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
 import { nestedDocsPlugin } from '@payloadcms/plugin-nested-docs'
@@ -15,7 +13,6 @@ import { redirectsPlugin } from '@payloadcms/plugin-redirects'
 import { seoPlugin } from '@payloadcms/plugin-seo'
 import { searchPlugin } from '@payloadcms/plugin-search'
 
-// Rich Text Editor
 import {
   BoldFeature,
   FixedToolbarFeature,
@@ -26,7 +23,6 @@ import {
   UnderlineFeature,
 } from '@payloadcms/richtext-lexical'
 
-// Collections & Globals
 import Categories from './collections/Categories'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
@@ -37,18 +33,15 @@ import Users from './collections/Users'
 import { Footer } from './globals/Footer/config'
 import { Header } from './globals/Header/config'
 
-// Endpoints & Hooks
 import { seedHandler } from './endpoints/seedHandler'
 import { revalidateRedirects } from './hooks/revalidateRedirects'
 import { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
 import { Page, Post } from 'src/payload-types'
 
-// Search
 import { searchFields } from '@/search/fieldOverrides'
 import { beforeSyncWithSearch } from '@/search/beforeSync'
 import { en } from '@payloadcms/translations/languages/en'
 import { de } from '@payloadcms/translations/languages/de'
-import { Logo } from './components/Logo'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -62,7 +55,6 @@ const generateURL: GenerateURL<Post | Page> = ({ doc }) =>
     : process.env.NEXT_PUBLIC_SERVER_URL!
 
 export default buildConfig({
-  // ✅ Localization
   localization: {
     locales: ['en', 'de'],
     defaultLocale: 'de',
@@ -147,10 +139,16 @@ export default buildConfig({
       overrides: {
         fields: ({ defaultFields }) =>
           defaultFields.map((field) => {
-            if ('name' in field && field.name === 'from') {
+            if (
+              'name' in field &&
+              'type' in field &&
+              field.name === 'from' &&
+              field.type === 'text'
+            ) {
               return {
                 ...field,
                 admin: {
+                  ...field.admin,
                   description: 'You will need to rebuild the website when changing this field.',
                 },
               }

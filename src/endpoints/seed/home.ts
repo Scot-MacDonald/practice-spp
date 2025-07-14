@@ -1,6 +1,6 @@
 import type { RequiredDataFromCollectionSlug } from 'payload'
 
-export const home = (locale: 'en' | 'tr'): RequiredDataFromCollectionSlug<'pages'> => ({
+export const home = (locale: 'en' | 'de'): RequiredDataFromCollectionSlug<'pages'> => ({
   slug: 'home',
   slugLock: false,
   _status: 'published',
@@ -39,10 +39,7 @@ export const home = (locale: 'en' | 'tr'): RequiredDataFromCollectionSlug<'pages
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text:
-                  locale === 'en'
-                    ? 'Payload Website Template'
-                    : 'Payload Website Teması',
+                text: locale === 'en' ? 'Payload Website Template' : 'Payload Website Teması',
                 version: 1,
               },
             ],
@@ -64,10 +61,7 @@ export const home = (locale: 'en' | 'tr'): RequiredDataFromCollectionSlug<'pages
                     format: 0,
                     mode: 'normal',
                     style: '',
-                    text:
-                      locale === 'en'
-                        ? 'Visit the admin dashboard'
-                        : 'Yönetici paneline git',
+                    text: locale === 'en' ? 'Visit the admin dashboard' : 'Yönetici paneline git',
                     version: 1,
                   },
                 ],
@@ -427,7 +421,10 @@ export const home = (locale: 'en' | 'tr'): RequiredDataFromCollectionSlug<'pages
                           format: 0,
                           mode: 'normal',
                           style: '',
-                          text: locale === 'en' ? 'admin dashboard' : 'yönetici panelinden doğrudan yönetebilirler',
+                          text:
+                            locale === 'en'
+                              ? 'admin dashboard'
+                              : 'yönetici panelinden doğrudan yönetebilirler',
                           version: 1,
                         },
                       ],
@@ -616,8 +613,7 @@ export const home = (locale: 'en' | 'tr'): RequiredDataFromCollectionSlug<'pages
                   format: 0,
                   mode: 'normal',
                   style: '',
-                  text:
-                    locale === 'en' ? 'This is a call to action' : 'Bu bir eylem çağrısıdır.',
+                  text: locale === 'en' ? 'This is a call to action' : 'Bu bir eylem çağrısıdır.',
                   version: 1,
                 },
               ],

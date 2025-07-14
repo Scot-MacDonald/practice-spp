@@ -19,6 +19,8 @@ function isTimeInRange(range: string, now: Date): boolean {
   return now >= start && now <= end
 }
 
+type DayKey = 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday'
+
 export const OpeningHours = () => {
   const [now, setNow] = useState(new Date())
   const t = useTranslations()
@@ -28,11 +30,12 @@ export const OpeningHours = () => {
     return () => clearInterval(interval)
   }, [])
 
+  const dayKeys: DayKey[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday']
+  const fullDayKeys = ['sunday', ...dayKeys, 'saturday']
   const currentDayIndex = now.getDay()
-  const dayKeys = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
-  const currentDayKey = dayKeys[currentDayIndex]
+  const currentDayKey = fullDayKeys[currentDayIndex] as DayKey
 
-  const weekdays = [
+  const weekdays: { key: DayKey; times: string[] }[] = [
     { key: 'monday', times: ['8:00 - 13:00'] },
     { key: 'tuesday', times: ['8:00 - 13:00', '14:30 - 18:00'] },
     { key: 'wednesday', times: ['8:00 - 12:00'] },
@@ -40,28 +43,27 @@ export const OpeningHours = () => {
     { key: 'friday', times: ['8:00 - 13:00'] },
   ]
 
-  // Determine if currently open
   const today = weekdays.find((day) => day.key === currentDayKey)
   const isOpenNow = today ? today.times.some((range) => isTimeInRange(range, now)) : false
 
   return (
     <div className="opening-hours pr-[49px]">
       <h2
-        className={cn(' text-xs font-normal mb-4', isOpenNow ? 'text-[#7eb36a]' : 'text-[#e15555]')}
+        className={cn('text-xs font-normal mb-4', isOpenNow ? 'text-[#7eb36a]' : 'text-[#e15555]')}
       >
         {isOpenNow ? t('open') : t('closed')}
       </h2>
       <div className="flex flex-col gap-2 text-[#4a5565]">
         {weekdays.map((day) => {
           const [morning, afternoon] = day.times
+          const isToday = day.key === currentDayKey
 
-          const isMorningNow = morning && isTimeInRange(morning, now) && day.key === currentDayKey
-          const isAfternoonNow =
-            afternoon && isTimeInRange(afternoon, now) && day.key === currentDayKey
+          const isMorningNow = morning && isTimeInRange(morning, now) && isToday
+          const isAfternoonNow = afternoon && isTimeInRange(afternoon, now) && isToday
 
           return (
             <div key={day.key} className="flex items-start w-full">
-              <p className="w-1/2 text-left">{t(`days.${day.key}`)}</p>
+              <p className="w-1/2 text-left">{t(`days.${day.key}` as `days.${DayKey}`)}</p>
 
               <p className="w-1/4 text-left">
                 {morning && <span className={cn(isMorningNow && 'text-[#7eb36a]')}>{morning}</span>}
