@@ -36,6 +36,7 @@
     "@payloadcms/plugin-search": "^3.24.0",
     "@payloadcms/plugin-seo": "^3.24.0",
     "@payloadcms/richtext-lexical": "^3.24.0",
+    "@payloadcms/storage-uploadthing": "^3.47.0",
     "@payloadcms/storage-vercel-blob": "^3.24.0",
     "@payloadcms/translations": "^3.24.0",
     "@payloadcms/ui": "^3.24.0",
